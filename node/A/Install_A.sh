@@ -48,5 +48,5 @@ sudo ndb_mgm -e show
 #  103  ndb_mgm -e show
 #  120  ps -aux | grep mysql
 #  121  cat /var/lib/mysql-cluster/config.ini 
-#  124  sudo netstat  -antpu
+#   124  sudo netstat  -antpu
 
