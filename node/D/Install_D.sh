@@ -3,11 +3,12 @@ sudo groupadd mysql
 sudo useradd -g mysql mysql
 sudo tar -zxvf ../Package/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64.tar.gz  -C /usr/local/
 sudo ln -s /usr/local/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64 /usr/local/mysql
-cd /usr/local/mysql
 sudo apt-get install -y  libaio1
 
+cd /usr/local/mysql
+
 sudo sudo /usr/local/mysql/scripts/mysql_install_db --user=mysql \
-	--datadir=/usr/local/mysql/data \
+	--datadir=/opt/data/mysql/data \
 	--basedir=/usr/local/mysql \
 	--plugin-dir=/usr/local/mysql/lib/plugin \
 	--log-error=/usr/local/mysql/data/ubuntu.err \
@@ -16,6 +17,8 @@ sudo sudo /usr/local/mysql/scripts/mysql_install_db --user=mysql \
 sudo chown -R root .
 sudo chown -R mysql data
 sudo chown -R mysql .
+
+sudo chown -R mysql /opt/data/mysql
 
 sudo cat > my.cnf << EOF
 [mysqld]
@@ -31,8 +34,7 @@ sudo ln -s /usr/local/mysql  /usr/share/mysql
 
 sudo cp support-files/mysql.server /etc/init.d/
 sudo chmod +x /etc/init.d/mysql.server 
-
-ifcon	
+	
 sudo /etc/init.d/mysql.server start
 sleep 10
 
