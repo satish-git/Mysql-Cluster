@@ -35,6 +35,7 @@ EOF
 
 sudo mkdir -p /usr/local/mysql/mysql-cluster
 sudo /usr/local/bin/ndb_mgmd -f /opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-cluster
+# sudo /usr/local/bin/ndb_mgmd --config-file=/opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-cluster --skip-config-cache
 sudo ndb_mgm -e show
    
 

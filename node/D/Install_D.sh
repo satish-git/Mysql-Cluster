@@ -5,9 +5,11 @@ sudo tar -zxvf ../Package/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64.tar.gz  
 sudo ln -s /usr/local/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64 /usr/local/mysql
 sudo apt-get install -y  libaio1
 
+sudo mkdir -p /opt/data/mysql/data
+
 cd /usr/local/mysql
 
-sudo sudo /usr/local/mysql/scripts/mysql_install_db --user=mysql \
+sudo /usr/local/mysql/scripts/mysql_install_db --user=mysql \
 	--datadir=/opt/data/mysql/data \
 	--basedir=/usr/local/mysql \
 	--plugin-dir=/usr/local/mysql/lib/plugin \
@@ -21,9 +23,14 @@ sudo chown -R mysql .
 sudo chown -R mysql /opt/data/mysql
 
 sudo cat > my.cnf << EOF
+[client]
+port=3306
+socket=/tmp/mysql.sock
+
 [mysqld]
 ndbcluster
 bind-address = 0.0.0.0
+datadir=/opt/data/mysql/data
 
 [mysql_cluster]
 ndb-connectstring=192.168.50.128
