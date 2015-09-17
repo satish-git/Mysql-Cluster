@@ -1,7 +1,7 @@
 sudo apt-get -y update
-sudo tar -zxvf ../Package/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64.tar.gz -C /usr/share/
-cd /usr/share/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64/
-sudo cp /usr/share/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64/bin/ndb_mgm* /usr/local/bin/
+sudo tar -zxvf ../Package/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64.tar.gz -C /usr/local/
+cd /usr/local/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64/
+sudo cp /usr/local/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64/bin/ndb_mgm* /usr/local/bin/
 cd /usr/local/bin
 sudo chmod +x ndb_mgm*
 sudo mkdir -p /var/lib/mysql-cluster
@@ -33,9 +33,9 @@ hostname=192.168.50.131
 
 EOF
 
-sudo mkdir -p /usr/local/mysql/mysql-cluster
-sudo /usr/local/bin/ndb_mgmd -f /var/lib/mysql-cluster/config.ini 
-sudo ndb_mgm -e show
+# sudo mkdir -p /usr/local/mysql/mysql-cluster
+# sudo /usr/local/bin/ndb_mgmd -f /var/lib/mysql-cluster/config.ini 
+# sudo ndb_mgm -e show
    
 
 
