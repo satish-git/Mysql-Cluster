@@ -42,7 +42,7 @@ sudo /usr/local/mysql/scripts/mysql_install_db --user=mysql \
      --basedir=/usr/local/mysql \
      --datadir=/opt/data/mysql/data \
      --plugin-dir=/usr/local/mysql/lib/plugin \
-     --log-error=/var/log/loonyard/mysql_error.log
+     --log-error=/var/log/loonyard/mysql_error.log \
      --pid-file=/usr/local/mysql/data/ubuntu.pid
 
 #Backup my.cnf file
