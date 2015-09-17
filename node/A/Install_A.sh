@@ -1,6 +1,5 @@
 sudo apt-get -y update
 sudo tar -zxvf ../Package/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64.tar.gz -C /usr/local/
-cd /usr/local/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64/
 sudo cp /usr/local/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64/bin/ndb_mgm* /usr/local/bin/
 cd /usr/local/bin
 sudo chmod +x ndb_mgm*
@@ -29,13 +28,14 @@ hostname=192.168.50.130
 datadir=/opt/data/mysql/data
 
 [mysqld]
-hostname=192.168.50.131
+
+[mysqld]
 
 EOF
 
-sudo mkdir -p /usr/local/mysql/mysql-cluster
-sudo /usr/local/bin/ndb_mgmd -f /opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-cluster
-# sudo /usr/local/bin/ndb_mgmd --config-file=/opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-cluster --skip-config-cache
+sudo mkdir -p /opt/data/mysql/mysql-config
+# sudo /usr/local/bin/ndb_mgmd -f /opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-cluster
+sudo /usr/local/bin/ndb_mgmd --config-file=/opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-config
 sudo ndb_mgm -e show
    
 
@@ -51,3 +51,4 @@ sudo ndb_mgm -e show
 #  121  cat /opt/data/mysql/mysql-cluster/config.ini 
 #   124  sudo netstat  -antpu
 
+# sudo /usr/local/bin/ndb_mgmd --config-file=/opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-config --skip-config-cache
