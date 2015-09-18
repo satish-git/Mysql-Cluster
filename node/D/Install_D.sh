@@ -1,4 +1,9 @@
 #!/bin/bash
+#!/bin/sh
+while read line; do
+echo $line | sudo tee -a  /etc/hosts
+done < ../hostname.txt
+
 CURRENT_DIR=`pwd`
 # Disabling AppArmor
 sudo /etc/init.d/apparmor stop
