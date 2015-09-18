@@ -22,15 +22,15 @@ IndexMemory=18M
 portnumber=2202
 
 [ndb_mgmd]
-hostname=192.168.50.128
+hostname=A-node.com
 datadir=/opt/data/mysql/mysql-cluster
 
 [ndbd]
-hostname=192.168.50.129
+hostname=B-node.com
 datadir=/opt/data/mysql/data
 
 [ndbd]
-hostname=192.168.50.130
+hostname=C-node.com
 datadir=/opt/data/mysql/data
 
 [mysqld]

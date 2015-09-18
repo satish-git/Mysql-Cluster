@@ -14,7 +14,7 @@ sudo cat > /etc/my.cnf << EOF
 ndbcluster
 
 [mysql_cluster]
-ndb-connectstring=192.168.50.128
+ndb-connectstring=A-node.com
 EOF
 
 sudo mkdir -p /opt/data/mysql/data
