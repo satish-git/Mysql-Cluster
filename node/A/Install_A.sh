@@ -10,6 +10,8 @@ sudo cp /usr/local/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64/bin/ndb_mgm* /u
 cd /usr/local/bin
 sudo chmod +x ndb_mgm*
 sudo mkdir -p /opt/data/mysql/mysql-cluster
+sudo mkdir -p /opt/data/mysql/mysql-config
+sudo chown -R mysql /opt/data/mysql
 cd /opt/data/mysql/mysql-cluster
 
 sudo cat > config.ini << EOF
@@ -39,11 +41,35 @@ datadir=/opt/data/mysql/data
 
 EOF
 
-sudo mkdir -p /opt/data/mysql/mysql-config
+sudo apt-get install -y supervisor
+sudo mkdir -p /var/log/loonyard
+sudo cat > /etc/supervisor/conf.d/mysql.conf << EOF
+[program:mysql]
+command=ndb_mgmd --config-file=/opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-config
+autostart=true
+autorestart=true
+startretries=3
+priority=1
+user=mysql
+stopasgroup=true
+stopsignal=QUIT
+stopwaitsecs=10
+redirect_stderr=true
+stdout_logfile=/var/log/loonyard/mysql.out.log
+stdout_logfile_maxbytes=1MB
+stdout_logfile_backups=10
+stderr_logfile=/var/log/loonyard/mysql.err.log
+stderr_logfile_maxbytes=1MB
+stderr_logfile_backups=10
+EOF
+
+sudo supervisorctl reread
+sudo supervisorctl update
+
 # sudo /usr/local/bin/ndb_mgmd -f /opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-cluster
-sudo /usr/local/bin/ndb_mgmd --config-file=/opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-config
+# sudo /usr/local/bin/ndb_mgmd --config-file=/opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-config
 sudo ndb_mgm -e show
-   
+ 
 
 
 
