@@ -6,6 +6,11 @@ done < ../hostname.txt
 sudo apt-get update
 sudo tar -zxvf ../Package/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64.tar.gz -C /usr/local/
 sudo cp /usr/local/mysql-cluster-gpl-7.4.7-linux-glibc2.5-x86_64/bin/ndbd  /usr/local/bin/
+
+# Add User & Group
+sudo groupadd mysql
+sudo useradd -r -g mysql mysql
+
 cd /usr/local/bin
 sudo chmod +x ndb*
 
