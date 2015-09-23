@@ -16,7 +16,7 @@ cd /usr/local/bin
 sudo chmod +x ndb_mgm*
 sudo mkdir -p /opt/data/mysql/mysql-cluster
 sudo mkdir -p /opt/data/mysql/mysql-config
-sudo chown -R mysql /opt/data/mysql
+sudo chown -R mysql.mysql /opt/data/mysql
 cd /opt/data/mysql/mysql-cluster
 
 sudo cat > config.ini << EOF
