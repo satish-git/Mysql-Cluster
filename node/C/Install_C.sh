@@ -15,5 +15,3 @@ EOF
 sudo mkdir -p /opt/data/mysql/data
 sudo /usr/local/bin/ndbd
 
-
-#hi
