@@ -25,7 +25,6 @@ ndb-connectstring=A-node.com
 EOF
 
 sudo mkdir -p /opt/data/mysql/data
-#sudo /usr/local/bin/ndbd
 sudo chown -R mysql /opt/data/mysql
 
 sudo apt-get install -y supervisor
