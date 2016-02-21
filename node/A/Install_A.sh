@@ -71,21 +71,10 @@ EOF
 sudo supervisorctl reread
 sudo supervisorctl update
 
-# sudo /usr/local/bin/ndb_mgmd -f /opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-cluster
-# sudo /usr/local/bin/ndb_mgmd --config-file=/opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-config
 sudo ndb_mgm -e show
  
 
-
-
-
-#   52  sudo vim config.ini 
-#   54  ndb_mgm -e 1 stop
-#   75  sudo vim config.ini 
-#  102  sudo /usr/local/bin/ndb_mgmd -f  /opt/data/mysql/mysql-cluster/config.ini  --initial
-#  103  ndb_mgm -e show
-#  120  ps -aux | grep mysql
-#  121  cat /opt/data/mysql/mysql-cluster/config.ini 
-#   124  sudo netstat  -antpu
-
+#ndb_mgm -e 1 stop
+#sudo /usr/local/bin/ndb_mgmd -f  /opt/data/mysql/mysql-cluster/config.ini  --initial
+#ps -aux | grep mysql
 # sudo /usr/local/bin/ndb_mgmd --config-file=/opt/data/mysql/mysql-cluster/config.ini --configdir=/opt/data/mysql/mysql-config --skip-config-cache
